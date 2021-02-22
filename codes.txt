@@ -1,0 +1,4 @@
+background
+GGO
+consolidation
+pleural_effusion
