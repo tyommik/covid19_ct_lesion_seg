@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <title>File Upload</title>
+    {{ dropzone.load_css() }}
+  </head>
+  <body>
+    <h1>File Upload</h1>
+    {{ dropzone.create(action='upload_files') }}
+    {{ dropzone.load_js() }}
+    {{ dropzone.config() }}
+  </body>
+</html>
