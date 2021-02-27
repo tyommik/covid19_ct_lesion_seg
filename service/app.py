@@ -18,6 +18,7 @@ app.config['DROPZONE_MAX_FILE_SIZE'] = 1000
 app.config['DROPZONE_ALLOWED_FILE_CUSTOM'] = True
 app.config['DROPZONE_ALLOWED_FILE_TYPE'] = '.zip, .nii, .nii.gz'
 app.config['DROPZONE_REDIRECT_VIEW'] = 'viewer'
+app.config['DROPZONE_TIMEOUT'] = 120000
 
 db = {}
 
