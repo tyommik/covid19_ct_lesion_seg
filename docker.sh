@@ -1,2 +1,4 @@
 #!/bin/bash
-docker build -t covid19-seg . && docker run -p 8090:5000 covid19-seg
+mkdir /tmp/uploads
+mkdir /tmp/downloads
+docker build -t covid19-seg . && docker run -v /tmp/uploads:/app/uploads -v /tmp/downloads:/app/downloads -p 8090:5000 covid19-seg
