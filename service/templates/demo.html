@@ -71,6 +71,7 @@ function myFunction() {
 
   var params = [];
   params["images"] = ["static/demo.nii.gz", "static/demo_mask.nii.gz"];
+  params["demo_mask.nii.gz"] = {"min": 0, "max": 3, "lut": "Red Overlay"};
   params["noNewFiles"] = true
   params["loadingComplete"] = () => {document.getElementById("loader").style.display = "none";}
   papaya.Container.startPapaya()

@@ -19,7 +19,7 @@ RUN pip3 install -r requirements.txt
 # Copy content of local /src directory to working directory
 COPY service/ .
 
-RUN mkdir uploads && mkdir downloads
+RUN mkdir -p uploads && mkdir -p downloads
 
 # Start application
 CMD [ "python3", "./app.py" ]

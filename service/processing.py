@@ -5,15 +5,18 @@ import pathlib
 import uuid
 import torch
 from lungmask import mask as lm
+import lung_inference
 import SimpleITK as sitk
 import nibabel as nib
 import os
 import json
 
-os.environ['CUDA_VISIBLE_DEVICES'] = "0"
+os.environ['CUDA_VISIBLE_DEVICES'] = ""
 
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-lungmask = lm.get_model('unet', 'R231CovidWeb')
+print(f'Device: {device}')
+# lungmask = lm.get_model('unet', 'R231CovidWeb')
+lungmask_covid = torch.jit.load(f'models/covid19_last_jit.pth', map_location=device)
 
 
 def get_inference(file_path, out_mask_file):
@@ -22,7 +25,11 @@ def get_inference(file_path, out_mask_file):
     input_image = sitk.ReadImage(str(file_path))
 
     # Calculate lung volume
-    segmentation = lm.apply(input_image, lungmask)
+    # segmentation = lm.inference(input_image, lungmask)
+
+    # Calculate covid lesions
+    result = lung_inference.apply(input_image, lungmask_covid, force_cpu=True)
+    segmentation = result['mask']
 
     input_img = nib.load(str(file_path))
     new_img = input_img.__class__(segmentation.T, input_img.affine, input_img.header)

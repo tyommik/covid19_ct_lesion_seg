@@ -108,12 +108,15 @@ function showPapaya(files) {
 
   var params = [];
   params["images"] = files;
+  let pathArr = files[1].split('/')
+  let mask_name = pathArr[pathArr.length - 1]
+  params[mask_name] = {"min": 0, "max": 3, "lut": "Red Overlay"};
   params["noNewFiles"] = true
   params["loadingComplete"] = () => {document.getElementById("loader").style.display = "none";}
   papaya.Container.startPapaya()
   papaya.Container.resetViewer(0, params)
   // params["luts"] = [{"name": "Custom", "data":[[0, 1, 0, 0], [.5, 1, 1, 0], [1, 1, 1, 1]]}];
-  // params["static/karolina_lungmask.nii"]  = {lut:"Custom"};
+  // params["static/demo.nii"]  = {lut:"Custom"};
 }
 
 
