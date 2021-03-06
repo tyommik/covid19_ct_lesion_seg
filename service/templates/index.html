@@ -1,0 +1,122 @@
+<html>
+<head>
+    <title>File Upload</title>
+    {{ dropzone.load_css() }}
+    <style type="text/css">
+        body {
+            font: 1.2em Arial, Helvetica, sans-serif; /* Шрифт на веб-странице */
+            text-align: center;
+            background: #D7E1F2; /* Цвет фона */
+            color: black; /* Цвет текста */
+        }
+
+        a {
+            color: #008BCE; /* Цвет ссылок */
+        }
+
+        #container {
+            width: 80%; /* Ширина макета */
+            margin: 0 auto; /* Выравниваем по центру */
+            background: white; /* Цвет колонок */
+        }
+
+        #header {
+            font-size: 2.2em; /* Размер текста */
+            text-align: center; /* Выравнивание по центру */
+            padding: 5px; /* Отступы вокруг текста */
+            background: #D71920; /* Цвет фона шапки */
+        }
+
+        #nav, #aside {
+            float: left;
+            width: 110px;
+            padding: 5px;
+        }
+
+        #content {
+            background: white;
+            margin: 0 60px; /* Ширина колонок */
+            padding: 10px;
+        }
+
+        #aside {
+            float: right;
+            color: #000;
+        }
+
+        h2 {
+            margin-left: 10%;
+            text-align: left;
+        }
+
+        #footer {
+            clear: both; /* Отменяем действие float */
+            padding: 5px; /* Отступы вокруг текста */
+            background: #D71920; /* Цвет фона подвала */
+        }
+
+        p {
+            text-align: left;
+            margin: 10px 10% 10px 10%;
+
+        }
+
+        p#slogan {
+            text-align: center;
+            margin: 5% 0 5% 5%;
+        }
+
+        img {
+            width: auto;
+            height: 300px;
+            margin: 0 5% 0 5%;
+        }
+
+        img.arrow {
+            height: 150px;
+            width: auto;
+        }
+
+        button {
+          margin-bottom: 50px;
+          color: black;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <h1>COVID-19 CT Image Analysis using AI</h1>
+        <p id="slogan">Artificial Intelligence gives you result in 10 minutes!</p>
+        <div id="info">
+            <h2>How it works:</h2>
+            <p>You need to upload an archive with your chest CT or nii-file to the system and wait about 10 - 15
+                minutes. </p>
+            <p>Create a zip archive which contains DCM-files and drag-n-drop one to the dropzone. The system also
+                support nii- or nii.gz-files</p>
+            <div>
+                <img src="static/1.gif" alt="zip">
+            </div>
+            <div>
+                <img class="arrow" src="static/arrow.png" alt="">
+            </div>
+        </div>
+        {{ dropzone.style('border: 2px dashed #0087F7; margin: 0 10% 5% 10%; min-height: 200px;') }}
+        {{ dropzone.create(action='upload_files') }}
+        {{ dropzone.load_js() }}
+        {{ dropzone.config(custom_options='chunking: true, parallelUploads: 20, chunkSize:
+        1000000,') }}
+      <div>
+        <button onclick="window.location.href='./demo';">Show me DEMO!</button>
+      </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

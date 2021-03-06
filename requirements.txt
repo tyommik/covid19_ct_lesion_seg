@@ -1,0 +1,11 @@
+flask==1.1.1
+flask_restful==0.3.8
+flask-dropzone==1.5.4
+torch==1.7.0
+torchvision==0.8.1
+numpy==1.19.4
+matplotlib==3.3.3
+Pillow==8.0.1
+SimpleITK==2.0.1
+nibabel==3.2.1
+git+https://github.com/JoHof/lungmask

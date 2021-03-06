@@ -28,4 +28,4 @@ Run train.ipynb using your own data
 Using private dataset. There is no option to provide it :(
 
 ## Results
-Demo will be available soon
+`<demo>` : <https://covid19.shibaev.info>
